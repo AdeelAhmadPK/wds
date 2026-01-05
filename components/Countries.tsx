@@ -127,7 +127,7 @@ const countries = [
 
 export default function Countries() {
   return (
-    <section id="countries" className="py-32 dark:bg-[#0a0a0a] bg-gray-50 relative overflow-hidden">
+    <section id="countries" className="py-32 dark:bg-[#0a0a0a] bg-white relative overflow-hidden">
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-5">
         <Globe2 className="w-[800px] h-[800px] dark:text-[#00ff88] text-gray-300" />
       </div>

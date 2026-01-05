@@ -24,10 +24,10 @@ export default function Header() {
 
             {/* Desktop Nav */}
             <nav className="hidden lg:flex items-center gap-8">
-              {['Home', 'Services', 'Countries', 'About', 'Contact'].map((item) => (
+              {['About', 'Services', 'How We Work', 'Countries', 'Contact'].map((item) => (
                 <a
                   key={item}
-                  href={`#${item.toLowerCase()}`}
+                  href={`#${item.toLowerCase().replace(/ /g, '-')}`}
                   className="text-gray-700 dark:text-[#e0e0e0] hover:text-[#00ff88] dark:hover:text-[#00ff88] transition-colors font-semibold"
                 >
                   {item}

@@ -15,7 +15,7 @@ export default function Footer() {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
   return (
-    <footer className="dark:bg-[#0a0a0a] bg-gray-900 border-t border-[#1a1a1a] relative">
+    <footer className="dark:bg-[#0a0a0a] bg-white border-t dark:border-[#1a1a1a] border-gray-200 relative">
       <div className="container py-20">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           {/* Company */}

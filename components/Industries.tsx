@@ -20,9 +20,9 @@ export default function Industries() {
         <div className="text-center mb-20">
           <h2 className="text-4xl md:text-5xl lg:text-7xl font-extrabold mb-6" style={{letterSpacing: '-0.03em'}}>
             <span className="gradient-text">Industries</span>
-            <span style={{color: 'var(--text-primary)'}}> We Serve</span>
+            <span className="text-[#1a1a1a] dark:text-white"> We Serve</span>
           </h2>
-          <p className="text-lg md:text-xl" style={{color: 'var(--text-secondary)'}}>
+          <p className="text-lg md:text-xl text-[#666666] dark:text-[#e0e0e0]">
             Specialized solutions across diverse sectors
           </p>
         </div>
@@ -38,8 +38,8 @@ export default function Industries() {
                 <div className="w-16 h-16 mx-auto bg-gradient-to-br from-[#00ff88] to-[#00cc66] rounded-2xl flex items-center justify-center mb-4 group-hover:rotate-12 transition-transform">
                   <Icon className="w-8 h-8 text-[#050505]" />
                 </div>
-                <h3 className="text-lg md:text-xl font-bold mb-2" style={{color: 'var(--text-primary)'}}>{industry.name}</h3>
-                <p className="text-sm font-semibold" style={{color: 'var(--text-secondary)'}}>{industry.count} Clients</p>
+                <h3 className="text-lg md:text-xl font-bold mb-2 text-[#1a1a1a] dark:text-white">{industry.name}</h3>
+                <p className="text-sm font-semibold text-[#666666] dark:text-[#e0e0e0]">{industry.count} Clients</p>
               </div>
             );
           })}

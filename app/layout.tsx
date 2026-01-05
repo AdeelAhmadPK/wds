@@ -103,7 +103,7 @@ export default function RootLayout({
         />
       </head>
       <body className="antialiased transition-colors duration-300">
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
           {children}
         </ThemeProvider>
       </body>

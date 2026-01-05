@@ -22,10 +22,10 @@ export default function Services() {
       <div className="container">
         <div className="text-center mb-20">
           <h2 className="text-4xl md:text-5xl lg:text-7xl font-extrabold mb-6" style={{letterSpacing: '-0.03em'}}>
-            <span style={{color: 'var(--text-primary)'}}>Expert </span>
+            <span className="text-white dark:text-white">Expert </span>
             <span className="gradient-text">Services</span>
           </h2>
-          <p className="text-lg md:text-xl max-w-3xl mx-auto" style={{color: 'var(--text-secondary)'}}>
+          <p className="text-lg md:text-xl max-w-3xl mx-auto text-white dark:text-[#e0e0e0]">
             World-class financial solutions tailored to your business
           </p>
         </div>
@@ -53,12 +53,12 @@ export default function Services() {
                   <Icon className="w-8 h-8 text-[#050505] dark:text-[#050505]" />
                 </div>
                 
-                <h3 className={`font-bold mb-4 ${isLarge ? 'text-2xl md:text-3xl' : 'text-lg md:text-xl'}`} style={{color: 'var(--text-primary)'}}>
+                <h3 className={`font-bold mb-4 ${isLarge ? 'text-2xl md:text-3xl' : 'text-lg md:text-xl'} text-white dark:text-white`}>
                   {service.title}
                 </h3>
                 
                 {isLarge && (
-                  <p className="text-base md:text-lg leading-relaxed mb-4" style={{color: 'var(--text-secondary)'}}>
+                  <p className="text-base md:text-lg leading-relaxed mb-4 text-white dark:text-[#e0e0e0]">
                     {service.desc}
                   </p>
                 )}

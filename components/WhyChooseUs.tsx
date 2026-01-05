@@ -23,10 +23,10 @@ export default function WhyChooseUs() {
         <div className="grid md:grid-cols-2 gap-16 items-center mb-20">
           <div>
             <h2 className="text-4xl md:text-5xl lg:text-7xl font-extrabold mb-6" style={{letterSpacing: '-0.03em'}}>
-              <span style={{color: 'var(--text-primary)'}}>Why </span>
+              <span className="text-[#1a1a1a] dark:text-white">Why </span>
               <span className="gradient-text">Choose Us</span>
             </h2>
-            <p className="text-lg md:text-xl" style={{color: 'var(--text-secondary)'}}>
+            <p className="text-lg md:text-xl text-[#666666] dark:text-[#e0e0e0]">
               Trusted by Fortune 500 companies and fast-growing startups worldwide
             </p>
           </div>
@@ -53,11 +53,11 @@ export default function WhyChooseUs() {
                   <Icon className="w-10 h-10 text-[#050505]" />
                 </div>
                 
-                <h3 className="text-xl md:text-2xl font-bold mb-4" style={{color: 'var(--text-primary)'}}>
+                <h3 className="text-xl md:text-2xl font-bold mb-4 text-[#1a1a1a] dark:text-white">
                   {feature.title}
                 </h3>
                 
-                <p className="leading-relaxed" style={{color: 'var(--text-secondary)'}}>
+                <p className="leading-relaxed text-[#666666] dark:text-[#e0e0e0]">
                   {feature.desc}
                 </p>
               </div>

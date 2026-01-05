@@ -10,7 +10,7 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section className="py-32 dark:bg-[#0a0a0a] bg-gray-50">
+    <section className="py-32 dark:bg-[#0a0a0a] bg-white">
       <div className="container">
         <div className="text-center mb-20">
           <h2 className="text-4xl md:text-5xl lg:text-7xl font-extrabold mb-6" style={{letterSpacing: '-0.03em'}}>
