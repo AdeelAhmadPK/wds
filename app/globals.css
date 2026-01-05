@@ -1,40 +1,42 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 
 @theme {
-  /* Custom Color Palette */
-  --color-navy-50: #f0f4f8;
-  --color-navy-100: #d9e2ec;
-  --color-navy-200: #bcccdc;
-  --color-navy-300: #9fb3c8;
-  --color-navy-400: #829ab1;
-  --color-navy-500: #627d98;
-  --color-navy-600: #486581;
-  --color-navy-700: #334e68;
-  --color-navy-800: #1a2332;
-  --color-navy-900: #0f1822;
+  /* PREMIUM 2026 COLORS - Electric Mint + Hot Pink on True Black */
+  --color-black: #050505;
+  --color-card: #0a0a0a;
+  --color-border: #1a1a1a;
   
-  --color-gold-50: #fffbeb;
-  --color-gold-100: #fef3c7;
-  --color-gold-200: #fde68a;
-  --color-gold-300: #fcd34d;
-  --color-gold-400: #fbbf24;
-  --color-gold-500: #f59e0b;
-  --color-gold-600: #d97706;
-  --color-gold-700: #b45309;
-  --color-gold-800: #92400e;
-  --color-gold-900: #78350f;
+  --color-mint: #00ff88;
+  --color-mint-dark: #00cc66;
+  --color-pink: #ff0066;
+  --color-pink-dark: #cc0052;
+  
+  --color-text: #e0e0e0;
+  --color-text-muted: #888888;
+  
+  /* Light Mode */
+  --color-light-bg: #ffffff;
+  --color-light-card: #f8f8f8;
+  --color-light-border: #e5e5e5;
+  
+  /* Typography - Space Grotesk (Display) + DM Sans (Body) */
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+}
 
-  /* Typography */
-  --font-sans: 'Open Sans', ui-sans-serif, system-ui, sans-serif;
-  --font-heading: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+:root {
+  /* Light mode text colors */
+  --text-primary: #1a1a1a;
+  --text-secondary: #666666;
+  --text-tertiary: #888888;
+}
 
-  /* Spacing */
-  --spacing-container: 1rem;
-  --spacing-container-sm: 2rem;
-  --spacing-container-lg: 4rem;
-  --spacing-container-xl: 5rem;
-  --spacing-container-2xl: 6rem;
+.dark {
+  /* Dark mode text colors */
+  --text-primary: #ffffff;
+  --text-secondary: #e0e0e0;
+  --text-tertiary: #888888;
 }
 
 @layer base {
@@ -50,70 +52,228 @@
 
   body {
     font-family: var(--font-sans);
-    color: #1f2937;
-    background: #ffffff;
+    font-size: 18px;
     line-height: 1.7;
+    font-weight: 400;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    font-size: 16px;
   }
 
+  /* Light Mode - Dark text by default */
+  body {
+    background: #ffffff;
+    color: #1a1a1a;
+  }
+
+  /* Dark Mode - Light text */
+  .dark body {
+    background: #050505;
+    color: #e0e0e0;
+  }
+
+  /* Headings use Space Grotesk */
   h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-heading);
+    font-family: var(--font-display);
     font-weight: 800;
-    line-height: 1.2;
-    color: #0f172a;
-    letter-spacing: -0.02em;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    color: var(--text-primary);
   }
-
-  a {
-    text-decoration: none;
-    color: inherit;
-  }
-
-  button {
-    cursor: pointer;
-    font-family: inherit;
+  
+  h1 { font-size: clamp(48px, 8vw, 88px); }
+  h2 { font-size: clamp(36px, 6vw, 56px); }
+  h3 { font-size: clamp(24px, 4vw, 40px); }
+  
+  /* Text elements */
+  p {
+    color: var(--text-secondary);
   }
 }
 
-@layer utilities {
+/* PREMIUM CARD - Sharp Shadows, NO Glassmorphism */
+.premium-card {
+  background: #f8f8f8;
+  border: 2px solid #e5e5e5;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.premium-card * {
+  color: var(--text-primary);
+}
+
+.dark .premium-card {
+  background: #0a0a0a;
+  border: 1px solid #1a1a1a;
+  box-shadow: 0 20px 50px rgba(0, 255, 136, 0.1);
+}
+
+.premium-card:hover {
+  transform: scale(1.03) rotate(1deg);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+  border-color: #00ff88;
+}
+
+.dark .premium-card:hover {
+  box-shadow: 0 30px 70px rgba(0, 255, 136, 0.15);
+  border-color: rgba(0, 255, 136, 0.3);
+}
+
+/* GRADIENT TEXT - Electric Mint */
+.gradient-text {
+  background: linear-gradient(135deg, #00ff88 0%, #00cc66 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 800;
+  color: transparent !important;
+}
+
+.gradient-text-pink {
+  background: linear-gradient(135deg, #ff0066 0%, #cc0052 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 800;
+  color: transparent !important;
+}
+
+/* GRADIENT BUTTONS */
+.gradient-btn {
+  background: linear-gradient(135deg, #00ff88 0%, #00cc66 100%);
+  color: #050505;
+  font-weight: 700;
+  font-family: var(--font-display);
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 255, 136, 0.3);
+  transition: all 0.3s ease;
+}
+
+.gradient-btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 60px rgba(0, 255, 136, 0.5);
+}
+
+.gradient-btn-pink {
+  background: linear-gradient(135deg, #ff0066 0%, #cc0052 100%);
+  color: #ffffff;
+  font-weight: 700;
+  font-family: var(--font-display);
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(255, 0, 102, 0.3);
+  transition: all 0.3s ease;
+}
+
+.gradient-btn-pink:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 60px rgba(255, 0, 102, 0.5);
+}
+
+/* CARD HOVER - 3D Tilt Effect */
+.card-hover {
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-hover:hover {
+  transform: translateY(-12px) scale(1.02) rotate(0.5deg);
+}
+
+/* SHARP SHADOWS */
+.sharp-shadow {
+  box-shadow: 0 20px 50px rgba(0, 255, 136, 0.1);
+}
+
+.sharp-shadow-pink {
+  box-shadow: 0 20px 50px rgba(255, 0, 102, 0.15);
+}
+
+/* ANIMATED GRADIENTS */
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.animated-gradient {
+  background: linear-gradient(270deg, #00ff88, #00cc66, #00ff88);
+  background-size: 200% 200%;
+  animation: gradient-shift 8s ease infinite;
+}
+
+/* Container */
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  max-width: 1280px;
+}
+
+@media (min-width: 640px) {
   .container {
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: var(--spacing-container);
-    padding-right: var(--spacing-container);
-  }
-  
-  @media (min-width: 640px) {
-    .container {
-      padding-left: var(--spacing-container-sm);
-      padding-right: var(--spacing-container-sm);
-    }
-  }
-  
-  @media (min-width: 1024px) {
-    .container {
-      padding-left: var(--spacing-container-lg);
-      padding-right: var(--spacing-container-lg);
-    }
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
 }
 
-/* Custom scrollbar */
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+@keyframes rotate360 {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.rotate-on-scroll {
+  animation: rotate360 1s ease-in-out;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(0, 255, 136, 0.3); }
+  50% { box-shadow: 0 0 40px rgba(0, 255, 136, 0.6); }
+}
+
+.pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Hide scrollbar */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 12px;
+  width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f5f9;
+  background: #0a0a0a;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(to bottom, #f59e0b, #d97706);
-  border-radius: 6px;
+  background: linear-gradient(to bottom, #00ff88, #00cc66);
+  border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(to bottom, #d97706, #b45309);
+  background: linear-gradient(to bottom, #00cc66, #009955);
 }

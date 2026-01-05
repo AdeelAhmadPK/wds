@@ -53,6 +53,8 @@ export const metadata: Metadata = {
   },
 };
 
+import ThemeProvider from '@/components/ThemeProvider';
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -100,8 +102,10 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
         />
       </head>
-      <body className="antialiased">
-        {children}
+      <body className="antialiased transition-colors duration-300">
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

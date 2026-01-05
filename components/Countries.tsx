@@ -1,126 +1,193 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { Globe2, Phone, MapPin } from 'lucide-react';
+
+const FlagIcon = ({ country }: { country: string }) => {
+  const flags: Record<string, string> = {
+    'US': 'M0 0h640v480H0z M0 0h640v55.4H0zm0 110.8h640v55.4H0zm0 110.8h640v55.4H0zm0 110.8h640V480H0zM0 0h256v258.5H0z M0 0h256v27.7H0zm0 55.4h256v27.7H0zm0 55.4h256v27.7H0zm0 55.4h256v27.7H0zm0 55.4h256v27.7H0z M19.7 19.7l7.1 21.8h23l-18.6 13.5 7.1 21.9-18.6-13.5-18.6 13.5 7.1-21.9-18.6-13.5h23z',
+    'GB': 'M0 0h640v480H0z M0 0v480l640-480zm640 0v480L0 0z M213.3 0v480h213.4V0z M0 160v160h640V160z',
+    'SA': 'M0 0h640v480H0z M128 120h384v80H128zm0 160h384v80H128z',
+    'AE': 'M0 0h640v160H0zm0 160h640v160H0zm0 160h640v160H0z M0 0h213.3v480H0z',
+    'CA': 'M0 0h213.3v480H0zm426.7 0H640v480H426.7z M320 140l-20 60-40-20 20 60-60 20 60 20-20 60 40-20 20 60 20-60 40 20-20-60 60-20-60-20 20-60-40 20z',
+    'AU': 'M0 0h640v480H0z M0 0h320v240H0z M160 120l-15 45-40-30h50l-40 30z',
+    'PK': 'M0 0h640v480H0z M160 0h480v480H160z M380 180l-30 90-80-60h100l-80 60z',
+    'IN': 'M0 0h640v160H0zm0 160h640v160H0zm0 160h640v160H0z M320 200a40 40 0 1 0 0 80 40 40 0 0 0 0-80z'
+  };
+  
+  return (
+    <div className="w-16 h-16 rounded-xl overflow-hidden shadow-lg border-2 border-white/20">
+      <svg viewBox="0 0 640 480" className="w-full h-full">
+        <defs>
+          <clipPath id={`flag-${country}`}>
+            <rect width="640" height="480" rx="20"/>
+          </clipPath>
+        </defs>
+        <g clipPath={`url(#flag-${country})`}>
+          {country === 'US' && (
+            <>
+              <path fill="#b22234" d="M0 0h640v480H0z"/>
+              <path stroke="#fff" strokeWidth="37" d="M0 55.4h640M0 129.2h640M0 203h640M0 276.9h640M0 350.7h640M0 424.5h640M0 498.3h640"/>
+              <path fill="#3c3b6e" d="M0 0h256v258.5H0z"/>
+              <g fill="#fff">
+                <g id="s18">
+                  <g id="s9">
+                    <g id="s5">
+                      <g id="s4">
+                        <path id="s" d="M13.5 13.5l5 15.4 13.1-9.5-13.1-9.5z"/>
+                        <use href="#s" y="52"/>
+                        <use href="#s" y="104"/>
+                      </g>
+                      <use href="#s" y="156"/>
+                    </g>
+                    <use href="#s4" x="26"/>
+                  </g>
+                  <use href="#s9" x="52"/>
+                </g>
+                <use href="#s18" x="104"/>
+                <use href="#s9" x="156"/>
+              </g>
+            </>
+          )}
+          {country === 'GB' && (
+            <>
+              <path fill="#012169" d="M0 0h640v480H0z"/>
+              <path stroke="#fff" strokeWidth="96" d="M0 0l640 480M640 0L0 480"/>
+              <path stroke="#C8102E" strokeWidth="64" d="M0 0l640 480M640 0L0 480"/>
+              <path stroke="#fff" strokeWidth="160" d="M320 0v480M0 240h640"/>
+              <path stroke="#C8102E" strokeWidth="96" d="M320 0v480M0 240h640"/>
+            </>
+          )}
+          {country === 'SA' && (
+            <>
+              <path fill="#165B33" d="M0 0h640v480H0z"/>
+              <g fill="#fff" transform="translate(140 180) scale(2.5)">
+                <text fontSize="48" fontWeight="bold" fontFamily="Arial">⚔️</text>
+              </g>
+            </>
+          )}
+          {country === 'AE' && (
+            <>
+              <path fill="#00732F" d="M0 0h640v160H0z"/>
+              <path fill="#fff" d="M0 160h640v160H0z"/>
+              <path d="M0 320h640v160H0z"/>
+              <path fill="#FF0000" d="M0 0h200v480H0z"/>
+            </>
+          )}
+          {country === 'CA' && (
+            <>
+              <path fill="#fff" d="M0 0h640v480H0z"/>
+              <path fill="#FF0000" d="M0 0h160v480H0zm480 0h160v480H480z"/>
+              <path fill="#FF0000" d="M320 100l-40 80-60-20 40 80-80 20 80 40-40 80 60-40 40 80 40-80 60 40-40-80 80-40-80-20 40-80-60 20z"/>
+            </>
+          )}
+          {country === 'AU' && (
+            <>
+              <path fill="#012169" d="M0 0h640v480H0z"/>
+              <path fill="#fff" d="M0 0h320v240H0z"/>
+              <path fill="#012169" d="M0 0h320v240H0z"/>
+              <path stroke="#fff" strokeWidth="48" d="M160 0v240M0 120h320"/>
+              <path stroke="#C8102E" strokeWidth="32" d="M160 0v240M0 120h320"/>
+              <path fill="#fff" d="M400 100l-20 60-50-40h60l-50 40 20-60-20 60-50-40h60l-50 40z"/>
+            </>
+          )}
+          {country === 'PK' && (
+            <>
+              <path fill="#01411C" d="M0 0h640v480H0z"/>
+              <path fill="#fff" d="M0 0h160v480H0z"/>
+              <circle cx="400" cy="240" r="80" fill="#fff"/>
+              <circle cx="420" cy="240" r="70" fill="#01411C"/>
+              <path fill="#fff" d="M360 200l20 60 50-40-50 40 20-60-20 60 50 40-50-40-20 60z"/>
+            </>
+          )}
+          {country === 'IN' && (
+            <>
+              <path fill="#FF9933" d="M0 0h640v160H0z"/>
+              <path fill="#fff" d="M0 160h640v160H0z"/>
+              <path fill="#138808" d="M0 320h640v160H0z"/>
+              <circle cx="320" cy="240" r="50" stroke="#000080" strokeWidth="3" fill="none"/>
+              <circle cx="320" cy="240" r="5" fill="#000080"/>
+            </>
+          )}
+        </g>
+      </svg>
+    </div>
+  );
+};
 
 const countries = [
-  {
-    flag: '🇺🇸',
-    name: 'United States',
-    services: 'Tax planning, accounting, business advisory, and compliance with IRS regulations',
-    specialties: ['Federal & State Tax', 'Corporate Accounting', 'Business Formation'],
-  },
-  {
-    flag: '🇬🇧',
-    name: 'United Kingdom',
-    services: 'UK accounting standards, HMRC compliance, VAT services, and company secretarial support',
-    specialties: ['HMRC Compliance', 'UK GAAP', 'Corporation Tax'],
-  },
-  {
-    flag: '🇸🇦',
-    name: 'Saudi Arabia (KSA)',
-    services: 'ZATCA e-invoicing, VAT compliance, Zakat filing, and SOCPA accounting standards',
-    specialties: ['ZATCA E-invoicing', 'Zakat Services', 'VAT Filing'],
-  },
-  {
-    flag: '🇦🇪',
-    name: 'United Arab Emirates',
-    services: 'UAE corporate tax, VAT registration, mainland & freezone accounting, and FTA compliance',
-    specialties: ['Corporate Tax (9%)', 'VAT Services', 'Freezone Setup'],
-  },
-  {
-    flag: '🇨🇦',
-    name: 'Canada',
-    services: 'Canadian tax returns, GST/HST compliance, payroll services, and business incorporation',
-    specialties: ['CRA Compliance', 'GST/HST', 'Business Tax'],
-  },
-  {
-    flag: '🇦🇺',
-    name: 'Australia',
-    services: 'Australian taxation, BAS statements, GST services, and business advisory',
-    specialties: ['ATO Compliance', 'BAS Lodgement', 'Tax Planning'],
-  },
-  {
-    flag: '🇵🇰',
-    name: 'Pakistan',
-    services: 'FBR compliance, income tax returns, sales tax, and company accounts maintenance',
-    specialties: ['FBR Filing', 'Sales Tax', 'Annual Audits'],
-  },
-  {
-    flag: '🇮🇳',
-    name: 'India',
-    services: 'GST compliance, income tax planning, company incorporation, and ROC filings',
-    specialties: ['GST Returns', 'Income Tax', 'ROC Compliance'],
-  },
+  { code: 'US', name: 'United States', office: 'New York', phone: '+1 (234) 567-8900', services: 'Tax, Accounting, IRS Compliance' },
+  { code: 'GB', name: 'United Kingdom', office: 'London', phone: '+44 20 7123 4567', services: 'UK GAAP, HMRC, VAT Services' },
+  { code: 'SA', name: 'Saudi Arabia', office: 'Riyadh', phone: '+966 11 123 4567', services: 'ZATCA E-invoicing, Zakat, VAT' },
+  { code: 'AE', name: 'UAE', office: 'Dubai', phone: '+971 4 123 4567', services: 'Corporate Tax, VAT, Freezone Setup' },
+  { code: 'CA', name: 'Canada', office: 'Toronto', phone: '+1 (416) 123 4567', services: 'CRA Compliance, GST/HST' },
+  { code: 'AU', name: 'Australia', office: 'Sydney', phone: '+61 2 1234 5678', services: 'ATO Compliance, BAS Lodgement' },
+  { code: 'PK', name: 'Pakistan', office: 'Karachi', phone: '+92 21 123 4567', services: 'FBR Filing, Sales Tax, Audits' },
+  { code: 'IN', name: 'India', office: 'Mumbai', phone: '+91 22 1234 5678', services: 'GST Returns, Income Tax, ROC' },
 ];
 
 export default function Countries() {
   return (
-    <section id="countries" className="py-20 bg-white">
-      <div className="container mx-auto px-4">
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold text-navy-900 mb-4">
-            Global Reach, Local Expertise
-          </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Serving businesses across continents with specialized knowledge of local tax laws and accounting regulations
-          </p>
-        </motion.div>
+    <section id="countries" className="py-32 dark:bg-[#0a0a0a] bg-gray-50 relative overflow-hidden">
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-5">
+        <Globe2 className="w-[800px] h-[800px] dark:text-[#00ff88] text-gray-300" />
+      </div>
 
-        {/* Countries Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {countries.map((country, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-gradient-to-br from-white to-gray-50 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-gray-100 group hover:border-gold-400 transform hover:-translate-y-2"
-            >
-              <div className="text-7xl mb-5 group-hover:scale-110 transition-transform duration-300">{country.flag}</div>
-              <h3 className="text-2xl font-bold text-navy-900 mb-4 group-hover:text-gold-600 transition-colors">{country.name}</h3>
-              <p className="text-gray-700 mb-5 text-sm leading-relaxed font-medium">{country.services}</p>
-              
-              <div className="space-y-2">
-                {country.specialties.map((specialty, idx) => (
-                  <div key={idx} className="flex items-center gap-2">
-                    <div className="w-1.5 h-1.5 bg-gold-500 rounded-full"></div>
-                    <span className="text-xs font-medium text-gray-700">{specialty}</span>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-          ))}
+      <div className="container relative z-10">
+        <div className="text-center mb-20">
+          <h2 className="text-4xl md:text-5xl lg:text-7xl font-extrabold mb-6" style={{letterSpacing: '-0.03em'}}>
+            <span className="gradient-text">Global Reach</span>
+            <span className="text-gray-900 dark:text-white">, Local Expertise</span>
+          </h2>
+          <p className="text-lg md:text-xl text-gray-600 dark:text-[#888888] max-w-3xl mx-auto">
+            Professional accounting services across continents
+          </p>
         </div>
 
-        {/* Additional Markets */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          className="mt-12 text-center"
-        >
-          <div className="bg-gradient-to-r from-navy-900 to-navy-800 rounded-2xl p-8 text-white">
-            <h3 className="text-2xl font-bold mb-3">Expanding to More Markets</h3>
-            <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
-              We continuously expand our services to new jurisdictions. Contact us for accounting services in other international markets including Europe, Asia, and the Middle East.
-            </p>
-            <a
-              href="#contact"
-              className="inline-block bg-gold-500 text-white px-8 py-3 rounded-lg hover:bg-gold-600 transition-colors font-semibold"
-            >
-              Inquire About Your Country
-            </a>
+        {/* HORIZONTAL SCROLL CAROUSEL */}
+        <div className="relative">
+          <div className="overflow-x-auto hide-scrollbar pb-8">
+            <div className="flex gap-6" style={{width: 'max-content'}}>
+              {countries.map((country, i) => (
+                <div
+                  key={i}
+                  className="premium-card p-8 w-[340px] hover:scale-105 transition-transform relative"
+                  style={{transform: `rotate(${i % 2 === 0 ? '1deg' : '-1deg'})`}}
+                >
+                  <div className="absolute top-4 right-4 w-2 h-2 bg-[#00ff88] rounded-full animate-pulse"></div>
+                  
+                  <div className="mb-6">
+                    <FlagIcon country={country.code} />
+                  </div>
+                  
+                  <h3 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white mb-4">
+                    {country.name}
+                  </h3>
+                  
+                  <div className="space-y-3 mb-6">
+                    <div className="flex items-center gap-2 text-gray-600 dark:text-[#888888] text-sm">
+                      <MapPin className="w-4 h-4 text-[#00ff88]" />
+                      <span>{country.office} Office</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-gray-600 dark:text-[#888888] text-sm">
+                      <Phone className="w-4 h-4 text-[#00ff88]" />
+                      <a href={`tel:${country.phone}`} className="hover:text-[#00ff88] transition-colors">
+                        {country.phone}
+                      </a>
+                    </div>
+                  </div>
+                  
+                  <p className="text-gray-600 dark:text-[#888888] text-sm leading-relaxed">
+                    {country.services}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
-        </motion.div>
+          
+          <div className="text-center mt-8">
+            <p className="text-sm dark:text-[#888888] text-gray-500">← Scroll to explore →</p>
+          </div>
+        </div>
       </div>
     </section>
   );

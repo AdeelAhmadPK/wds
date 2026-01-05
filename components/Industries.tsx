@@ -1,99 +1,46 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { 
-  FaShoppingCart, 
-  FaLaptopCode, 
-  FaBuilding, 
-  FaHeartbeat, 
-  FaIndustry, 
-  FaHotel, 
-  FaShippingFast, 
-  FaBriefcase 
-} from 'react-icons/fa';
+import { Building2, Stethoscope, ShoppingCart, Warehouse, Plane, Home, Cpu, GraduationCap } from 'lucide-react';
 
 const industries = [
-  {
-    icon: FaShoppingCart,
-    name: 'E-commerce & Retail',
-    description: 'Online sellers, marketplaces, multi-channel retail',
-  },
-  {
-    icon: FaLaptopCode,
-    name: 'Technology & SaaS',
-    description: 'Software companies, IT services, tech startups',
-  },
-  {
-    icon: FaBuilding,
-    name: 'Real Estate',
-    description: 'Property development, real estate investment',
-  },
-  {
-    icon: FaHeartbeat,
-    name: 'Healthcare',
-    description: 'Clinics, hospitals, medical practitioners',
-  },
-  {
-    icon: FaIndustry,
-    name: 'Manufacturing',
-    description: 'Production facilities, industrial operations',
-  },
-  {
-    icon: FaHotel,
-    name: 'Hospitality & Tourism',
-    description: 'Hotels, restaurants, travel agencies',
-  },
-  {
-    icon: FaShippingFast,
-    name: 'Trading & Import/Export',
-    description: 'International trade, logistics, distribution',
-  },
-  {
-    icon: FaBriefcase,
-    name: 'Professional Services',
-    description: 'Consultants, agencies, service providers',
-  },
+  { icon: Building2, name: 'Real Estate', count: '150+' },
+  { icon: Stethoscope, name: 'Healthcare', count: '85+' },
+  { icon: ShoppingCart, name: 'E-commerce', count: '200+' },
+  { icon: Warehouse, name: 'Manufacturing', count: '120+' },
+  { icon: Plane, name: 'Travel', count: '95+' },
+  { icon: Home, name: 'Construction', count: '110+' },
+  { icon: Cpu, name: 'Technology', count: '180+' },
+  { icon: GraduationCap, name: 'Education', count: '65+' },
 ];
 
 export default function Industries() {
   return (
-    <section className="py-20 bg-white">
-      <div className="container mx-auto px-4">
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold text-navy-900 mb-4">
-            Industries We Serve
+    <section className="py-32 dark:bg-[#050505] bg-white">
+      <div className="container">
+        <div className="text-center mb-20">
+          <h2 className="text-4xl md:text-5xl lg:text-7xl font-extrabold mb-6" style={{letterSpacing: '-0.03em'}}>
+            <span className="gradient-text">Industries</span>
+            <span style={{color: 'var(--text-primary)'}}> We Serve</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Specialized accounting expertise across diverse business sectors
+          <p className="text-lg md:text-xl" style={{color: 'var(--text-secondary)'}}>
+            Specialized solutions across diverse sectors
           </p>
-        </motion.div>
+        </div>
 
-        {/* Industries Grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-          {industries.map((industry, index) => {
+          {industries.map((industry, i) => {
             const Icon = industry.icon;
             return (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.05 }}
-                className="bg-gradient-to-br from-white to-gray-50 rounded-2xl p-8 text-center shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-gray-100 hover:border-gold-400 group transform hover:-translate-y-2"
+              <div
+                key={i}
+                className="premium-card p-8 text-center hover:scale-110 transition-transform group"
               >
-                <div className="text-gold-600 text-6xl mb-5 group-hover:scale-110 transition-transform duration-300">
-                  <Icon className="mx-auto" />
+                <div className="w-16 h-16 mx-auto bg-gradient-to-br from-[#00ff88] to-[#00cc66] rounded-2xl flex items-center justify-center mb-4 group-hover:rotate-12 transition-transform">
+                  <Icon className="w-8 h-8 text-[#050505]" />
                 </div>
-                <h3 className="text-lg font-bold text-navy-900 mb-2">{industry.name}</h3>
-                <p className="text-sm text-gray-600">{industry.description}</p>
-              </motion.div>
+                <h3 className="text-lg md:text-xl font-bold mb-2" style={{color: 'var(--text-primary)'}}>{industry.name}</h3>
+                <p className="text-sm font-semibold" style={{color: 'var(--text-secondary)'}}>{industry.count} Clients</p>
+              </div>
             );
           })}
         </div>

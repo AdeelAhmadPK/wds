@@ -1,62 +1,54 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { FaPhone, FaCalendarCheck } from 'react-icons/fa';
+import { MessageSquare, Calendar } from 'lucide-react';
 
 export default function CTASection() {
   return (
-    <section className="py-20 bg-gradient-to-r from-gold-500 via-gold-600 to-orange-500 text-white relative overflow-hidden">
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full filter blur-3xl"></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-yellow-300 rounded-full filter blur-3xl"></div>
-      </div>
-      <div className="container mx-auto px-4 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center max-w-4xl mx-auto"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Ready to Streamline Your Finances?
-          </h2>
-          <p className="text-xl md:text-2xl mb-10 text-white/90">
-            Get a free consultation with our expert chartered accountants and discover how we can help your business thrive globally
-          </p>
+    <section className="py-32 relative overflow-hidden">
+      {/* Full-Width Gradient Background */}
+      <div className="absolute inset-0 bg-gradient-to-r from-[#00ff88] via-[#00cc66] to-[#00ff88] animate-gradient-x"></div>
+      
+      {/* Subtle Pattern Overlay */}
+      <div className="absolute inset-0" style={{
+        backgroundImage: 'radial-gradient(circle, rgba(0,0,0,0.1) 1px, transparent 1px)',
+        backgroundSize: '20px 20px'
+      }}></div>
 
+      <div className="container relative z-10">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-6xl md:text-8xl font-extrabold text-[#050505] mb-8 leading-[1.1]" style={{letterSpacing: '-0.03em'}}>
+            Ready to Transform
+            <br />
+            Your Finances?
+          </h2>
+          
+          <p className="text-2xl text-[#050505]/80 mb-12 font-semibold">
+            Join 500+ businesses worldwide trusting us with their accounting
+          </p>
+          
           <div className="flex flex-wrap justify-center gap-6">
             <a
               href="#contact"
-              className="bg-white text-gold-600 px-10 py-5 rounded-xl hover:bg-gray-50 transition-all font-bold text-lg shadow-2xl hover:shadow-3xl transform hover:-translate-y-2 hover:scale-105 inline-flex items-center gap-3"
+              className="bg-[#050505] text-[#00ff88] px-12 py-6 rounded-xl font-bold text-lg flex items-center gap-3 hover:bg-[#1a1a1a] transition-all shadow-2xl"
             >
-              <FaCalendarCheck className="text-xl" />
+              <Calendar className="w-6 h-6" />
               Book Free Consultation
             </a>
             <a
-              href="tel:+1234567890"
-              className="bg-navy-900 text-white px-10 py-5 rounded-xl hover:bg-navy-800 transition-all font-bold text-lg shadow-2xl hover:shadow-3xl transform hover:-translate-y-2 hover:scale-105 inline-flex items-center gap-3"
+              href="https://wa.me/1234567890"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-transparent border-4 border-[#050505] text-[#050505] px-12 py-6 rounded-xl font-bold text-lg flex items-center gap-3 hover:bg-[#050505] hover:text-[#00ff88] transition-all"
             >
-              <FaPhone />
-              Call Now: +1 (234) 567-8900
+              <MessageSquare className="w-6 h-6" />
+              Chat on WhatsApp
             </a>
           </div>
-
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
-              <h3 className="text-3xl font-bold mb-2">Free</h3>
-              <p className="text-white/90">Initial Consultation</p>
-            </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
-              <h3 className="text-3xl font-bold mb-2">24-48h</h3>
-              <p className="text-white/90">Response Time</p>
-            </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
-              <h3 className="text-3xl font-bold mb-2">100%</h3>
-              <p className="text-white/90">Confidential</p>
-            </div>
-          </div>
-        </motion.div>
+          
+          <p className="text-[#050505]/70 font-semibold text-sm mt-10">
+            ⚡ 2-hour response time • 🔒 100% Confidential • ✅ No Obligation
+          </p>
+        </div>
       </div>
     </section>
   );

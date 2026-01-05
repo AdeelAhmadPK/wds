@@ -1,114 +1,69 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { FaUserTie, FaGlobe, FaHeadset, FaLightbulb, FaDollarSign, FaClock } from 'react-icons/fa';
+import { Shield, Zap, Award, Users, Clock, Globe } from 'lucide-react';
 
 const features = [
-  {
-    icon: FaUserTie,
-    title: '20+ Years Combined Experience',
-    description: 'Seasoned chartered accountants with deep expertise across multiple industries and jurisdictions',
-  },
-  {
-    icon: FaGlobe,
-    title: 'Multi-Country Expertise',
-    description: 'Licensed and qualified in multiple jurisdictions with in-depth knowledge of local regulations',
-  },
-  {
-    icon: FaHeadset,
-    title: 'Personalized Service',
-    description: 'Dedicated account managers who understand your business and provide tailored solutions',
-  },
-  {
-    icon: FaLightbulb,
-    title: 'Technology-Driven',
-    description: 'Cloud accounting platforms and real-time reporting for instant financial insights',
-  },
-  {
-    icon: FaDollarSign,
-    title: 'Competitive Pricing',
-    description: 'Transparent fee structure with no hidden costs, offering exceptional value for premium services',
-  },
-  {
-    icon: FaClock,
-    title: '24/7 Support',
-    description: 'Global time zone coverage ensuring support whenever and wherever you need it',
-  },
+  { icon: Shield, title: 'International Compliance', desc: 'Expert knowledge of 25+ country tax regulations', gradient: 'mint' },
+  { icon: Zap, title: 'Fast Turnaround', desc: '24-48 hour service for most tasks', gradient: 'pink' },
+  { icon: Award, title: 'Certified Professionals', desc: 'ACCA, ICAEW, CPA qualified accountants', gradient: 'mint' },
+  { icon: Users, title: 'Personalized Service', desc: 'Dedicated teams for your account', gradient: 'mint' },
+  { icon: Clock, title: '24/7 Availability', desc: 'Round-the-clock support across all time zones', gradient: 'pink' },
+  { icon: Globe, title: 'Multi-Currency', desc: 'Seamless handling of 30+ currencies', gradient: 'mint' },
 ];
 
 export default function WhyChooseUs() {
   return (
-    <section id="about" className="py-20 bg-gradient-to-br from-[#0a1628] via-[#1a2f4a] to-[#0f1f35] text-white relative overflow-hidden">
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-20 right-20 w-96 h-96 bg-gold-500 rounded-full filter blur-3xl"></div>
-      </div>
-      <div className="relative z-10">
-      <div className="container mx-auto px-4">
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Why Businesses Trust <span className="text-gold-400">WDS Finance</span>
-          </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            We combine global expertise with personalized service to deliver exceptional accounting solutions
-          </p>
-        </motion.div>
+    <section className="py-32 dark:bg-[#050505] bg-white relative overflow-hidden">
+      {/* Gradient Blobs */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#00ff88] rounded-full filter blur-[150px] opacity-10"></div>
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#ff0066] rounded-full filter blur-[150px] opacity-10"></div>
 
-        {/* Features Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {features.map((feature, index) => {
+      <div className="container relative z-10">
+        {/* ZIGZAG LAYOUT */}
+        <div className="grid md:grid-cols-2 gap-16 items-center mb-20">
+          <div>
+            <h2 className="text-4xl md:text-5xl lg:text-7xl font-extrabold mb-6" style={{letterSpacing: '-0.03em'}}>
+              <span style={{color: 'var(--text-primary)'}}>Why </span>
+              <span className="gradient-text">Choose Us</span>
+            </h2>
+            <p className="text-lg md:text-xl" style={{color: 'var(--text-secondary)'}}>
+              Trusted by Fortune 500 companies and fast-growing startups worldwide
+            </p>
+          </div>
+          <div className="hidden md:block">
+            <div className="text-9xl font-extrabold gradient-text opacity-20">500+</div>
+          </div>
+        </div>
+
+        {/* Features Grid - Varied Layout */}
+        <div className="grid md:grid-cols-3 gap-8">
+          {features.map((feature, i) => {
             const Icon = feature.icon;
+            const isMint = feature.gradient === 'mint';
+            
             return (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:bg-white/15 transition-all duration-300"
+              <div
+                key={i}
+                className="premium-card p-10 card-hover group"
+                style={{transform: `rotate(${i % 2 === 0 ? '0.5deg' : '-0.5deg'})`}}
               >
-                <div className="text-gold-400 text-4xl mb-4">
-                  <Icon />
+                <div className={`w-20 h-20 rounded-2xl ${
+                  isMint ? 'bg-gradient-to-br from-[#00ff88] to-[#00cc66]' : 'bg-gradient-to-br from-[#ff0066] to-[#cc0052]'
+                } flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-12 transition-all`}>
+                  <Icon className="w-10 h-10 text-[#050505]" />
                 </div>
-                <h3 className="text-xl font-bold mb-3">{feature.title}</h3>
-                <p className="text-gray-300 leading-relaxed">{feature.description}</p>
-              </motion.div>
+                
+                <h3 className="text-xl md:text-2xl font-bold mb-4" style={{color: 'var(--text-primary)'}}>
+                  {feature.title}
+                </h3>
+                
+                <p className="leading-relaxed" style={{color: 'var(--text-secondary)'}}>
+                  {feature.desc}
+                </p>
+              </div>
             );
           })}
         </div>
-
-        {/* Stats Section */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 text-center"
-        >
-          <div>
-            <div className="text-5xl font-bold text-gold-400 mb-2">500+</div>
-            <div className="text-gray-300">Happy Clients</div>
-          </div>
-          <div>
-            <div className="text-5xl font-bold text-gold-400 mb-2">8+</div>
-            <div className="text-gray-300">Countries</div>
-          </div>
-          <div>
-            <div className="text-5xl font-bold text-gold-400 mb-2">98%</div>
-            <div className="text-gray-300">Client Retention</div>
-          </div>
-          <div>
-            <div className="text-5xl font-bold text-gold-400 mb-2">24/7</div>
-            <div className="text-gray-300">Support Available</div>
-          </div>
-        </motion.div>
-      </div>
       </div>
     </section>
   );
